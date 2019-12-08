@@ -72,7 +72,7 @@ Usage
 -----
 
 Usage follows the following pattern, where options are optional and the neccesity of value depends on the options used
-    
+
     light [options] <value>
 
 ### Command options
@@ -97,7 +97,7 @@ Without any extra options, the command will operate on the device called `sysfs/
 
 ### Extra options
 
-These can be mixed, combined and matched after convenience. 
+These can be mixed, combined and matched after convenience.
 
 * `-r` Raw mode, values (printed and interpreted from commandline) will be treated as integers in the controllers native range, instead of in percent.
 * `-v <verbosity>` Specifies the verbosity level. 0 is default and prints nothing. 1 prints only errors, 2 prints only errors and warnings, and 3 prints both errors, warnings and notices.

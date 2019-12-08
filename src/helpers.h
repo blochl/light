@@ -9,10 +9,10 @@
 /* Clamps x(value) between y(min) and z(max) in a nested ternary operation */
 #define LIGHT_CLAMP(val, min, max) (val < min ? light_log_clamp_min(min) : (val > max ? light_log_clamp_max(max) : val))
 
-/* Verbosity levels: 
+/* Verbosity levels:
 * 0 - No output
 * 1 - Errors
-* 2 - Errors, warnings 
+* 2 - Errors, warnings
 * 3 - Errors, warnings, notices
 */
 typedef enum {

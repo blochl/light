@@ -10,28 +10,28 @@ We use 4 spaces for indentation. We have an empty line at the top and bottom of 
 
 The following two sources should be clear enough examples of our coding style:
 
-### Header files 
+### Header files
 
 ```c
-    
+
     #pragma once
-    
+
     #include <stdbool.h>
     #include <stdint.h>
     #include <stdfoo.h> /* foo_type_t */
-    
-    
+
+
     typedef struct _some_struct_t some_struct_t;
-    struct _some_struct_t 
+    struct _some_struct_t
     {
         uint64_t    id;
         foo_type_t  my_foo_thing;
         foo_type_t  *my_foo_ptr;
     }
-    
+
     /* Describe what the purpose of this function is, what it does with/to foo_struct, and what it returns. */
     bool do_some_stuff(some_struct_t *foo_struct);
-    
+
 ```
 
 ### Source files
@@ -52,25 +52,25 @@ static void _increment_one(uint64_t *out_value)
 bool do_some_stuff(some_struct_t *foo_struct)
 {
     _increment_one(foo_struct->id);
-    
+
     if(foo_struct->id > 33)
     {
         return false;
     }
-    
+
     if(foo_struct->my_foo_ptr != NULL)
     {
         free(foo_struct->my_foo_ptr);
     }
-    
+
     foo_struct->my_foo_ptr = malloc(sizeof(foo_type_t));
-    
+
     return true;
 }
 
 ```
 
-## Implementing an enumerator 
+## Implementing an enumerator
 
 Implementing your own devices through an enumerator is pretty easy. The required steps are as follows:
 
@@ -84,14 +84,14 @@ In the header, you need to first do a `#pragma once` (obviously), then `#include
 
 ```c
 
-#pragma once 
+#pragma once
 
 #include "light.h"
 
 // Implementation of the foo enumerator
 // Enumerates devices for quacking ducks
 
-// Device target data 
+// Device target data
 struct _impl_foo_data_t
 {
     int32_t internal_quack_id;
@@ -125,20 +125,20 @@ The job of the enumerator is to identify/enumerate a bunch of different devices 
 bool impl_foo_init(light_device_enumerator_t *enumerator)
 {
     /* Lets create a single device, with a single target, for simplicity */
-    
+
     /* Create a new device called new_device_name, we dont need any userdata so pass NULL to the device_data parameter */
     light_device_t *new_device = light_create_device(enumerator, "new_device_name", NULL)
-    
-    /* Setup userdata specific to the target we will create*/ 
+
+    /* Setup userdata specific to the target we will create*/
     /* Useful to for example reference an ID in a third-party API or likewise */
     /* NOTE: The userdata will be free()'d automatically on exit, so you do not need to free it yourself */
     impl_foo_data_t *custom_data = malloc(sizeof(impl_foo_data_t));
     custom_data->internal_quack_id = 333;
-    
-    
+
+
     /* Create a new device target called new_target_name, and pass in the functions and userdata that we just allocated */
     light_create_device_target(new_device, "new_target_name", impl_foo_set, impl_foo_get, impl_foo_getmax, impl_foo_command, custom_data)
-    
+
     /* Return true because we didnt get any errors! */
     return true;
 }

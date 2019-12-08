@@ -7,7 +7,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <errno.h> // errno
-#include <libgen.h> // dirname 
+#include <libgen.h> // dirname
 
 
 bool light_file_read_uint64(char const *filename, uint64_t *val)
@@ -142,7 +142,7 @@ int light_mkpath(char *dir, mode_t mode)
     char *tempdir = strdup(dir);
     light_mkpath(dirname(tempdir), mode);
     free(tempdir);
-    
+
     return mkdir(dir, mode);
 }
 

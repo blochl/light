@@ -1,12 +1,12 @@
 
-#pragma once 
+#pragma once
 
 #include "light.h"
 
 // Implementation of the sysfs enumerator
 // Enumerates devices for backlights and leds
 
-// Device target data 
+// Device target data
 struct _impl_sysfs_data_t
 {
     char brightness[NAME_MAX];

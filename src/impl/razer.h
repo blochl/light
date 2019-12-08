@@ -1,12 +1,12 @@
 
-#pragma once 
+#pragma once
 
 #include "light.h"
 
 // Implementation of the razer enumerator
 // Enumerates devices for the openrazer driver https://github.com/openrazer/openrazer
 
-// Device target data 
+// Device target data
 struct _impl_razer_data_t
 {
     char brightness[NAME_MAX];

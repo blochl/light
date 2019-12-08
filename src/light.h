@@ -70,7 +70,7 @@ typedef bool (*LFUNCCOMMAND)(light_context_t *);
 
 struct _light_context_t
 {
-    struct 
+    struct
     {
         LFUNCCOMMAND            command; // What command was issued
         // Only one of value and raw_value is populated; which one depends on the command
@@ -82,15 +82,15 @@ struct _light_context_t
 
     struct
     {
-        char                    conf_dir[NAME_MAX]; // The path to the application cache directory 
+        char                    conf_dir[NAME_MAX]; // The path to the application cache directory
     } sys_params;
-    
+
     light_device_enumerator_t   **enumerators;
     uint64_t                    num_enumerators;
 };
 
 // The different available commands
-bool light_cmd_print_help(light_context_t *ctx); // H,h 
+bool light_cmd_print_help(light_context_t *ctx); // H,h
 bool light_cmd_print_version(light_context_t *ctx); // V
 bool light_cmd_list_devices(light_context_t *ctx); // L
 bool light_cmd_set_brightness(light_context_t *ctx); // S
@@ -135,7 +135,7 @@ light_device_target_t *light_create_device_target(light_device_t *device, char c
 void light_delete_device_target(light_device_target_t *device_target);
 
 typedef struct _light_target_path_t light_target_path_t;
-struct _light_target_path_t 
+struct _light_target_path_t
 {
     char enumerator[NAME_MAX];
     char device[NAME_MAX];
